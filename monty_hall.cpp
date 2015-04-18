@@ -25,10 +25,9 @@ int main(int argc, char *argv[]) {
   size_t change = 0, stay = 0;
   std::vector<bool> doors(n_doors, false);
 
-  srand(time(NULL));
   doors[0] = true;
   for (size_t i = 0; i < N; i++) {
-    std::random_shuffle(std::begin(doors), std::end(doors));
+    std::shuffle(std::begin(doors), std::end(doors), engine);
     // contestant's first choice
     const size_t first_choice = distribution(engine);
 
