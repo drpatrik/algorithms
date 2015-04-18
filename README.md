@@ -1,3 +1,3 @@
-	Implementation of some famous algorithms and problems written by Patrik Tennberg
+	Implementation of some algorithms and problems.
 
-	Many of the code samples c++11 compliant compiler.
+	Many of the code samples requires a c++11 compliant compiler.
