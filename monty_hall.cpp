@@ -1,7 +1,7 @@
 // Monty Hall Simulation
 // Patrik Tennberg, 2014
 
-#include <cstdlib>
+#include <random>
 #include <vector>
 #include <string>
 #include <algorithm>
@@ -19,6 +19,9 @@ int main(int argc, char *argv[]) {
     printf("must be at least 3 doors\n");
     return -1;
   }
+  std::mt19937 engine {std::random_device{}()};
+  std::uniform_int_distribution<size_t> distribution {0, n_doors - 1};
+
   size_t change = 0, stay = 0;
   std::vector<bool> doors(n_doors, false);
 
@@ -27,7 +30,7 @@ int main(int argc, char *argv[]) {
   for (size_t i = 0; i < N; i++) {
     std::random_shuffle(std::begin(doors), std::end(doors));
     // contestant's first choice
-    const size_t first_choice = (rand() % n_doors);
+    const size_t first_choice = distribution(engine);
 
     // game host opens a goat door
     size_t open_door = 0;
@@ -39,7 +42,7 @@ int main(int argc, char *argv[]) {
     size_t second_choice;
 
     do {
-      second_choice = (rand() % n_doors);
+      second_choice = distribution(engine);
     } while (second_choice == first_choice || second_choice == open_door);
 
     stay += doors[first_choice];
