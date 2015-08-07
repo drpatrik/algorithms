@@ -1,3 +1,5 @@
+// Patrik Tennberg, 2015
+
 #include <iostream>
 #include <vector>
 #include <algorithm>

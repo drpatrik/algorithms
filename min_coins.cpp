@@ -1,3 +1,5 @@
+// Patrik Tennberg, 2015
+
 #include <vector>
 #include <climits>
 #include <iostream>
