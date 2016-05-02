@@ -7,7 +7,7 @@
 
 class Tower : public std::stack<int> {
  public:
-  Tower(const std::string& name) : name_(name) {}
+  explicit Tower(const std::string& name) : name_(name) {}
   const std::string& name() const { return name_; }
 
  private:
