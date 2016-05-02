@@ -37,10 +37,13 @@ int main(int, char* []) {
       lines += (adjust_lines + 1);
       adjust_lines = 0;
     }
-    auto words_bytes = count_words(line);
+    size_t words_in_line;
+    size_t bytes_in_line;
 
-    words += words_bytes.first;
-    bytes += words_bytes.second;
+    std::tie(words_in_line, bytes_in_line) = count_words(line);
+
+    words += words_in_line;
+    bytes +=bytes_in_line;
   }
   std::cout << '\t' << lines << '\t' << words << '\t' << bytes << '\n';
 
