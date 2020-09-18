@@ -37,12 +37,6 @@ void call_permutation() {
 
   permutation(p, v, 0, v.size());
 
-  for (auto v : p) {
-    for (auto a : v) {
-      std::cout << a;
-    }
-    std::cout << '\n';
-  }
   std::cout << p.size() << " permutation(s)\n";
 }
 
