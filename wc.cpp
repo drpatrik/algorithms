@@ -30,6 +30,7 @@ int main(int, char* []) {
 
   while (std::cin) {
     std::getline(std::cin, line);
+
     if (line.empty()) {
       adjust_lines++;
     } else {
@@ -37,10 +38,7 @@ int main(int, char* []) {
       lines += (adjust_lines + 1);
       adjust_lines = 0;
     }
-    size_t words_in_line;
-    size_t bytes_in_line;
-
-    std::tie(words_in_line, bytes_in_line) = count_words(line);
+    auto [words_in_line, bytes_in_line] = count_words(line);
 
     words += words_in_line;
     bytes +=bytes_in_line;
