@@ -17,7 +17,7 @@ def frequency_to_millisecond():
     return int(1000.0 / SIMULATION_UPDATE_FREQ)
 
 
-class Circle:
+class Ball:
     def __init__(self, canvas, w, h, velocity):
         self.canvas = canvas
         self.w = w
@@ -119,7 +119,7 @@ class Simulation:
         self.simwinner = None
         self.objects = []
         self.canvas.delete("all")
-        self.objects = [Circle(self.canvas, self.w, self.h, velocity)
+        self.objects = [Ball(self.canvas, self.w, self.h, velocity)
                         for obj in range(n_objects)]
 
     def stop(self):
