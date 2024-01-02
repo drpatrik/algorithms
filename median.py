@@ -2,9 +2,9 @@ import sys
 
 
 class Array:
-    def __init__(self, array):
+    def __init__(self, arr):
         self.head = 0
-        self.array = array
+        self.array = arr
 
     def peek(self):
         return -1 if self.head == len(self.array) else self.array[self.head]
@@ -18,7 +18,7 @@ class DataSet:
         self.len = 0
         self.arrays = []
 
-    def size(self):
+    def __len__(self):
         return self.len
 
     def append(self, arr):
@@ -40,7 +40,7 @@ class DataSet:
     def median(self):
         duplicates = 0
         current_value = 0
-        for i in range(int(self.size() / 2)):
+        for i in range(int(self.len / 2)):
             next_value = self.next()
             duplicates += (current_value == next_value)
             current_value = next_value
@@ -53,8 +53,8 @@ def read_files(argv):
     data_set = DataSet()
 
     for arg in argv:
-        f = open(arg, "r")
         arr = []
+        f = open(arg, "r")
         f.readline()  # Skip N
         for line in f.readlines():
             arr.append(int(line))
@@ -66,4 +66,5 @@ def read_files(argv):
 
 if __name__ == "__main__":
     data_set = read_files(sys.argv[1:])
-    print("Median = ", data_set.median(), "Size = ", data_set.size())
+    print("Median, n duplicates = {}, size = {}".format(data_set.median(),
+                                                        len(data_set)))
