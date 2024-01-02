@@ -1,5 +1,5 @@
 // Patrik Tennberg, 2020
-// Implemenation of Heap's permutation algorithm from 1963
+// Implementation of Heap's permutation algorithm from 1963
 
 #include <vector>
 #include <iostream>
