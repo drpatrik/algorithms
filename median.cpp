@@ -1,4 +1,3 @@
-#include <fstream>
 #include <vector>
 #include <memory>
 #include <cassert>
@@ -56,16 +55,16 @@ class DataSet {
 
   auto median() const {
     int duplicates = 0;
-    int current_value = 0;
+    int current_value = -1;
 
-    for (size_t i = 0; i < size_t(total_size_ / 2); ++i) {
-      float next_value = next();
+    for (size_t i = 0; i < total_size_ >> 1; ++i) {
+      auto next_value = next();
 
       duplicates += (current_value == next_value);
       current_value = next_value;
     }
 
-    return std::make_pair((total_size_ % 2 == 0) ? (current_value + next()) / 2.0 : next(), duplicates);
+    return std::make_pair(((total_size_ & 1) == 0) ? (current_value + next()) / 2.0 : next(), duplicates);
   }
 
  private:
@@ -75,7 +74,6 @@ class DataSet {
 
 DataSet read_files(int argc, const char* argv[]) {
   DataSet data_set;
-  int size = 0;
 
   for (int i = 1; i < argc; ++i) {
     FILE* fp = fopen(argv[i], "r");
@@ -84,6 +82,7 @@ DataSet read_files(int argc, const char* argv[]) {
       printf("File not found - %s", argv[i]);
       exit(0);
     }
+    int size;
 
     fscanf(fp, "%d", &size);
     int* arr = new int[size];
